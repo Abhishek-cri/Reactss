@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState, useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 // import bullet from "./Img/bullet.svg";
@@ -12,46 +13,25 @@ import person2 from "./Img/person-2.jfif";
 import person3 from "./Img/person-3.jpg";
 import video from "./Img/video.svg";
 
-async function getimage() {
 
-  const metadataRes = await fetch("https://jsonkeeper.com/b/X663");
-				const metadata = await metadataRes.json();
-        const img_url = metadata.image;
-        //  console.log(img_url);
-        return img_url;
-
-}
 
 
 function App() {
-  // const mobileBtn = document.getElementById("mobile-cta");
-  // const nav = document.querySelector("nav");
-  // const mobileBtnExit = document.getElementById("mobile-exit");
 
-  // mobileBtn.addEventListener("click", () => {
-  //   nav.classList.add("menu-btn");
-  // });
-
-  // mobileBtnExit.addEventListener("click", () => {
-  //   nav.classList.remove("menu-btn");
-  // });
-    // const metadataRes = await fetch("https://jsonkeeper.com/b/X663");
-		// 		const metadata = await metadataRes.json();
-    //             img_url = metadata.image;
-
-    // const connectWallet = async () => {
-      
-    //   if (typeof window.ethereum !== 'undefined') {
-    //     console.log('MetaMask is installed!');
-    //   }
-    //  else
-    //  {
-    //   console.log('Metamask not detected');
-    //  }
-     
-
-    // }
-    const my_img=getimage();
+        const [imageUrl, setImageUrl] = useState(null);
+    useEffect(() => {
+      async function fetchData() {
+  
+          const res = await fetch('https://nftbackend.onrender.com/nft/token/0');
+          const json = await res.json();
+          setImageUrl(json.image);
+        
+      }
+  
+      fetchData();
+    }, []);
+	
+	
   return (
     <div className="App">
     {/* // <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script> */}
@@ -108,8 +88,9 @@ function App() {
         </div>
       </div>
       {/* <!--NAVIGATION BLOG END--> */}
-      <div>
-        <img src={ my_img }></img>
+
+       <div class="nft-ad-container">
+        <img class= "shownft" src={ imageUrl }  alt="NFT Ad"></img>
       </div>
       
      
