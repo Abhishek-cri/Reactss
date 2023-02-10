@@ -30,6 +30,29 @@ section {
   padding: 1em;
 }
 
+.nft-ad-container {
+  text-align: center;
+  background-color: red;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+}
+
+
+
+
+img.shownft {
+  display: block;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+  width: 400px;
+  height: 300px;
+}
+
+
+
+
 .nav-bar .logo-nav {
   text-decoration: none;
   font-weight: bold;
